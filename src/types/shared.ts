@@ -1,7 +1,7 @@
-import { ZodTypeAny } from "zod";
-import { ZodValidator } from "@tanstack/zod-form-adapter";
-import type { FieldApi, FormApi, ReactFormApi } from "@tanstack/react-form";
-import {
+import type { ZodTypeAny } from "zod";
+import type { ZodValidator } from "@tanstack/zod-form-adapter";
+import type { DeepKeys, FieldApi, FormApi, ReactFormApi } from "@tanstack/react-form";
+import type {
   InvalidateOptions,
   InvalidateQueryFilters,
 } from "@tanstack/react-query";
@@ -30,3 +30,5 @@ export type TanstackInvalidateQuery = {
   filters?: Omit<InvalidateQueryFilters, "queryKey">;
   options?: InvalidateOptions;
 };
+
+export type DataDeepKeys<T> = DeepKeys<T>
