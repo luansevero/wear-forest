@@ -1,5 +1,9 @@
-import { CartItem } from "./cart"
+import { Product } from "./product"
 import { BaseSchemaModuleT } from "./shared"
+
+export type CartItem = BaseSchemaModuleT & Pick<Product, "product_name"> & {
+  amount: number
+}
 
 export type CheckoutInput = BaseSchemaModuleT & {
   Cart: Array<CartItem> | null
