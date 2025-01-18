@@ -11,13 +11,13 @@ const checkoutRouter = {
 
 type GetProductsPayload= GetPayload<Product>
 
-async function postCheckout(params: GetProductsPayload): Promise<ListProductOutput> {
+async function getProducts(params: GetProductsPayload): Promise<ListProductOutput> {
   const url = buildUrlWithParams(checkoutRouter.base, params)
   return api.post(url).then(response => response.data)
 }
 
 export {
-  postCheckout
+  getProducts
 }
 export type {
   GetProductsPayload
