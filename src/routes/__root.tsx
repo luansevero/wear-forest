@@ -1,15 +1,23 @@
-import * as React from 'react'
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import * as React from "react";
+import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import { Toaster } from "@/@core/components/ui/Toast";
+import { ThemeProvider } from "@/contexts/theme-provider";
+import { QueryClient } from "@tanstack/query-core";
 
-export const Route = createRootRoute({
+type RouteContext = {
+  queryClient: QueryClient;
+};
+export const Route = createRootRouteWithContext<RouteContext>()({
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
     <React.Fragment>
-      <div>Hi Wear Forest</div>
-      <Outlet />
+      <ThemeProvider defaultTheme="dark">
+        <Outlet />
+        <Toaster />
+      </ThemeProvider>
     </React.Fragment>
-  )
+  );
 }

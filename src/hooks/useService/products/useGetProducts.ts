@@ -27,9 +27,9 @@ export default function useGetProductsQueryOptions<
   params = {},
   isEnabled = true,
   ...options
-}: Props<TReturn>): QueryOptions<TReturn> {
+}: Props<TReturn> = {}): QueryOptions<TReturn> {
   return {
-    queryKey: ["products", params],
+    queryKey: ["products", ...Object.values(params)],
     queryFn: () =>
       getProducts(params),
     enabled: isEnabled,
@@ -37,6 +37,7 @@ export default function useGetProductsQueryOptions<
     ...options,
   };
 }
+
 
 export async function useInvalidateChallengeCache(
   queryClient: QueryClient,

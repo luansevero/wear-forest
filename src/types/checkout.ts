@@ -1,7 +1,7 @@
 import { Product } from "./product"
 import { BaseSchemaModuleT } from "./shared"
 
-export type CartItem = BaseSchemaModuleT & Pick<Product, "product_name"> & {
+export type CartItem = Pick<Product, "product_name" | "pid"> & {
   amount: number
 }
 

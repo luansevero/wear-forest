@@ -7,7 +7,7 @@ import type {
 } from "@tanstack/react-query";
 
 export type BaseModuleT = {
-  pid: number;
+  pid: string;
 };
 
 export type BaseSchemaModuleT = {
@@ -32,3 +32,8 @@ export type TanstackInvalidateQuery = {
 };
 
 export type DataDeepKeys<T> = DeepKeys<T>
+
+export type SelectItemT = {
+  value: string
+  label: string
+}
