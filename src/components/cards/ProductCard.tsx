@@ -67,6 +67,7 @@ export default function ProductCard(product: ProductCardProps) {
               rating={product_rating}
               size={14}
               disabled
+              className="ms-auto"
             />
           </div>
           <Typography variant="h4">{product_name}</Typography>
