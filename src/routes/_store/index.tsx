@@ -14,7 +14,8 @@ export const productsFiltersSchema = z.object({
   order_by_direction: z.optional(z.union([
     z.literal("asc"),
     z.literal("desc")
-  ]))
+  ])),
+  query: z.optional(z.string())
 });
 
 export const Route = createFileRoute("/_store/")({

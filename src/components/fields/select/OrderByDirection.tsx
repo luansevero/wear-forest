@@ -7,7 +7,7 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 
 export default function OrderByDirectionSelect() {
   const navigate = useNavigate();
-  const defaultValue = useSearch({
+  const value = useSearch({
     from: "/_store/",
     select(state) {
       return state?.order_by_direction ?? "none";
@@ -19,7 +19,7 @@ export default function OrderByDirectionSelect() {
       triggerProps={{
         className: "md:w-fit",
       }}
-      defaultValue={defaultValue}
+      value={value}
       options={["none", ...orderDirection.ids]}
       Content={(order_by) => {
         if (order_by === "none") {

@@ -56,3 +56,25 @@ export function handleSelectFilterChange(
     },
   });
 }
+
+export function handleSearchFilterChange(
+  key: string,
+  value: string,
+  navigate: UseNavigateResult<string>,
+) {
+  navigate({
+    from: "/",
+    replace: true,
+    search: (prev: any) => {
+      if (!value) {
+        const { [key]: _, ...remainingSearch } = prev;
+        return remainingSearch;
+      } else {
+        return {
+          ...prev,
+          [key]: value,
+        };
+      }
+    },
+  });
+}

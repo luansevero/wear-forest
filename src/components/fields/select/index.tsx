@@ -10,7 +10,7 @@ type SelectOption = string | number | object;
 
 type SelectProps<T extends SelectOption> = {
   options: T[] | undefined;
-  defaultValue?: string;
+  value?: string;
   placeholder?: string;
   Content: (option: T) => JSX.Element;
   icon?: JSX.Element; // Novo ícone opcional
@@ -21,14 +21,14 @@ type SelectProps<T extends SelectOption> = {
 export default function SelectField<T extends SelectOption>({
   options,
   Content,
-  defaultValue,
+  value,
   placeholder,
   icon,
   triggerProps,
   onValueChange = () => {},
 }: SelectProps<T>) {
   return (
-    <Select defaultValue={defaultValue} onValueChange={onValueChange}>
+    <Select onValueChange={onValueChange} value={value}>
       <SelectTrigger {...triggerProps}>
         <div className="flex w-full items-center gap-2 overflow-hidden truncate">
           {icon && <div className="flex-shrink-0">{icon}</div>}

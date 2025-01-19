@@ -7,19 +7,19 @@ import { handleSelectFilterChange } from "@/utils/filters";
 
 export default function ProductsOrderBySelect() {
   const navigate = useNavigate();
-  const defaultValue = useSearch({
+  const value = useSearch({
     from: "/_store/",
     select(state) {
       return state?.order_by ?? "none";
     },
   });
-
+  
   return (
     <SelectField
       triggerProps={{
         className: "md:w-fit",
       }}
-      defaultValue={defaultValue}
+      value={value}
       options={["none", ...productsOrderBy.ids]}
       Content={(order_by) => {
         if (order_by === "none") {
