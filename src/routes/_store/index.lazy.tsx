@@ -16,15 +16,18 @@ function RouteComponent() {
   const page = useSearch({
     from: "/_store/",
     select(state) {
-      return Number(state?.page) ?? 0
+      return Number(state?.page) ?? 0;
     },
-  })
+  });
 
   const { data, isPending, isLoading, isFetching } = useQuery(
     useGetProductsQueryOptions({
       params: {
         take: 24,
-        skip: page ?? 0
+        ...(page &&
+          page > 0 && {
+            skip: page,
+          }),
       },
     }),
   );
