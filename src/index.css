@@ -64,12 +64,12 @@
     @apply border-border;
   }
 
-  html, body, #root {
-    @apply min-h-svh w-full h-full
+  html, body {
+    @apply min-h-svh w-full h-full flex flex-col
   }
 
   #root {
-    @apply flex flex-col
+    @apply flex flex-col flex-1
   }
 
   body {

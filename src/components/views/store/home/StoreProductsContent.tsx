@@ -23,7 +23,7 @@ export default function StoreProductsContent({ productList }: Props) {
     <React.Fragment>
       <Grid
         data={productList?.items ?? []}
-        className="gap-4 px-0"
+        className="mx-auto w-full  max-w-7xl gap-4 px-4"
         children={(product) => (
           <ProductCard
             {...{
@@ -51,10 +51,12 @@ export default function StoreProductsContent({ productList }: Props) {
         )}
       />
       {productList?.total_items && (
-        <PaginationWithLinks
-          pageSize={24}
-          totalCount={productList?.total_items}
-        />
+        <div className="sticky bottom-0 mt-4 w-full border-t bg-white pb-4 pt-4">
+          <PaginationWithLinks
+            pageSize={24}
+            totalCount={productList?.total_items}
+          />
+        </div>
       )}
     </React.Fragment>
   );

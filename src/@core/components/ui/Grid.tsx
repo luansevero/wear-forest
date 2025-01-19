@@ -17,7 +17,7 @@ export default function Grid<T extends GridItem>({
   return (
     <ul
       className={cn(
-        "grid w-full px-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4",
+        "grid w-full px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
         className
       )}
     >

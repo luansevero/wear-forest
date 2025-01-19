@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute, useSearch } from "@tanstack/react-router";
 import useGetProductsQueryOptions from "@/hooks/useService/products/useGetProducts";
 import { useQuery } from "@tanstack/react-query";
 import ProductsSectionHeader from "@/components/views/store/home/ProductsSectionHeader";
@@ -13,10 +13,18 @@ export const Route = createLazyFileRoute("/_store/")({
 });
 
 function RouteComponent() {
+  const page = useSearch({
+    from: "/_store/",
+    select(state) {
+      return Number(state?.page) ?? 0
+    },
+  })
+
   const { data, isPending, isLoading, isFetching } = useQuery(
     useGetProductsQueryOptions({
       params: {
         take: 24,
+        skip: page ?? 0
       },
     }),
   );

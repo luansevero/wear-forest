@@ -29,7 +29,7 @@ export default function useGetProductsQueryOptions<
   ...options
 }: Props<TReturn> = {}): QueryOptions<TReturn> {
   return {
-    queryKey: ["products", ...Object.values(params)],
+    queryKey: ["products", params?.skip],
     queryFn: () => getProducts(params),
     enabled: isEnabled,
     refetchOnMount: "always",
