@@ -1,9 +1,9 @@
-import {
-  type QueryClient,
-  type UseQueryOptions,
-} from "@tanstack/react-query";
+import { type QueryClient, type UseQueryOptions } from "@tanstack/react-query";
 import type { ListProductOutput } from "@/types/product";
-import { getProducts, type GetProductsPayload } from "@/services/products/service";
+import {
+  getProducts,
+  type GetProductsPayload,
+} from "@/services/products/service";
 import type { TanstackInvalidateQuery } from "@/types/shared";
 
 type QueryOptions<TReturn extends object = ListProductOutput> = UseQueryOptions<
@@ -17,7 +17,7 @@ interface Props<TReturn extends object = ListProductOutput>
     QueryOptions<TReturn>,
     "queryKey" | "queryFn" | "retry" | "enabled"
   > {
-  params?: GetProductsPayload,
+  params?: GetProductsPayload;
   isEnabled?: boolean;
 }
 
@@ -30,22 +30,20 @@ export default function useGetProductsQueryOptions<
 }: Props<TReturn> = {}): QueryOptions<TReturn> {
   return {
     queryKey: ["products", ...Object.values(params)],
-    queryFn: () =>
-      getProducts(params),
+    queryFn: () => getProducts(params),
     enabled: isEnabled,
     refetchOnMount: "always",
     ...options,
   };
 }
 
-
 export async function useInvalidateChallengeCache(
   queryClient: QueryClient,
   params: GetProductsPayload,
-  { filters, options }: TanstackInvalidateQuery = {}
+  { filters, options }: TanstackInvalidateQuery = {},
 ) {
   const queryKey = useGetProductsQueryOptions({
-    params
+    params,
   }).queryKey;
 
   queryClient.invalidateQueries(
@@ -53,6 +51,6 @@ export async function useInvalidateChallengeCache(
       queryKey,
       ...filters,
     },
-    options
+    options,
   );
 }

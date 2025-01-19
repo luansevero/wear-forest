@@ -2,7 +2,7 @@ import { Button } from "@/@core/components/ui/Button";
 import Image from "@/@core/components/ui/Image";
 import Section from "@/@core/components/ui/Section";
 import Typography from "@/@core/components/ui/Typography";
-import { useSearch } from "@tanstack/react-router";
+import { Link, useSearch } from "@tanstack/react-router";
 import { FilterX } from "lucide-react";
 
 export default function EmptyProductsSection() {
@@ -25,9 +25,11 @@ export default function EmptyProductsSection() {
       </Typography>
       <div className="pt-6">
         {Object.values(filters)?.length > 0 && (
-          <Button>
-            <FilterX />
-            Remove filters
+          <Button asChild>
+            <Link to="/" search={undefined}>
+              <FilterX />
+              Remove filters
+            </Link>
           </Button>
         )}
       </div>

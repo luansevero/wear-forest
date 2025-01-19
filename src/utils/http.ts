@@ -6,7 +6,9 @@ export function buildUrlWithParams<TOrderBy extends GetPayload<any>>(
 ): string {
   let url = baseUrl;
 
-  Object.entries(payload).forEach(([key, value], index) => {
+  const params = updateParamsWithPagination(payload, payload?.take ?? 1)
+
+  Object.entries(params).forEach(([key, value], index) => {
     if (value !== undefined) {
       const separator = index === 0 && url.includes('?') ? '&' : (url.includes('?') ? '&' : '?');
       url += `${separator}${key}=${encodeURIComponent(value as string)}`;
@@ -14,4 +16,16 @@ export function buildUrlWithParams<TOrderBy extends GetPayload<any>>(
   });
 
   return url;
+}
+
+export function updateParamsWithPagination(params: Record<string, any>, pageSize: number) {
+  const { skip = 1 } = params;
+  
+  const updatedParams = { ...params };
+
+  if (skip) {
+    updatedParams.skip = (skip - 1) * pageSize;
+  }
+
+  return updatedParams;
 }
