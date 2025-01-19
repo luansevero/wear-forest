@@ -13,10 +13,14 @@ export const Route = createLazyFileRoute("/_store/")({
 });
 
 function RouteComponent() {
-  const page = useSearch({
+  const { page, order_by, order_by_direction } = useSearch({
     from: "/_store/",
     select(state) {
-      return Number(state?.page) ?? 0;
+      return {
+        page: Number(state?.page) ?? 0,
+        order_by: state?.order_by ?? undefined,
+        order_by_direction: state?.order_by_direction ?? undefined,
+      };
     },
   });
 
@@ -28,6 +32,12 @@ function RouteComponent() {
           page > 0 && {
             skip: page,
           }),
+        ...(order_by && {
+          order_by,
+        }),
+        ...(order_by_direction && {
+          order_by_direction,
+        }),
       },
     }),
   );

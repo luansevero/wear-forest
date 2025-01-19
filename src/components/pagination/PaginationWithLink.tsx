@@ -9,7 +9,7 @@ import {
   PaginationPrevious,
 } from "@/@core/components/ui/Pagination";
 import { cn } from "@/utils/cn";
-import { useLocation, useRouter } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 
 export interface PaginationWithLinksProps {
   pageSizeSelectOptions?: {
@@ -35,12 +35,10 @@ export interface PaginationWithLinksProps {
  * ```
  */
 export function PaginationWithLinks({
-  pageSizeSelectOptions,
   pageSize,
   totalCount,
   pageSearchParam,
 }: PaginationWithLinksProps) {
-  const router = useRouter();
   const { search: searchParams, pathname } = useLocation();
   const { page = 1 } = searchParams as {
     page: number;
@@ -72,19 +70,19 @@ export function PaginationWithLinks({
     [searchParams, pathname],
   );
 
-  const navToPageSize = useCallback(
-    (newPageSize: number) => {
-      const key = pageSizeSelectOptions?.pageSizeSearchParam || "pageSize";
-      const newSearchParams = new URLSearchParams(searchParams || undefined);
-      newSearchParams.set(key, String(newPageSize));
-      newSearchParams.delete(pageSearchParam || "page");
-      router.navigate({
-        to: pathname,
-        search: newSearchParams.toString(),
-      });
-    },
-    [searchParams, pathname],
-  );
+  // const navToPageSize = useCallback(
+  //   (newPageSize: number) => {
+  //     const key = pageSizeSelectOptions?.pageSizeSearchParam || "pageSize";
+  //     const newSearchParams = new URLSearchParams(searchParams || undefined);
+  //     newSearchParams.set(key, String(newPageSize));
+  //     newSearchParams.delete(pageSearchParam || "page");
+  //     router.navigate({
+  //       to: pathname,
+  //       search: newSearchParams.toString(),
+  //     });
+  //   },
+  //   [searchParams, pathname],
+  // );
 
   const renderPageNumbers = () => {
     const items: ReactNode[] = [];

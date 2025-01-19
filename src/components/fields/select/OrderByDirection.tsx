@@ -2,14 +2,24 @@ import SelectField from ".";
 import { SelectItem } from "@/@core/components/ui/Select";
 import { ArrowDownUp } from "lucide-react";
 import orderDirection from "@/constants/order_by/direction";
+import { handleSelectFilterChange } from "@/utils/filters";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 
 export default function OrderByDirectionSelect() {
+  const navigate = useNavigate();
+  const defaultValue = useSearch({
+    from: "/_store/",
+    select(state) {
+      return state?.order_by_direction ?? "none";
+    },
+  });
+
   return (
     <SelectField
       triggerProps={{
-        className: "md:w-fit"
+        className: "md:w-fit",
       }}
-      defaultValue="none"
+      defaultValue={defaultValue}
       options={["none", ...orderDirection.ids]}
       Content={(order_by) => {
         if (order_by === "none") {
@@ -23,8 +33,10 @@ export default function OrderByDirectionSelect() {
 
         return <SelectItem value={option.id}>{option.label}</SelectItem>;
       }}
-      icon={<ArrowDownUp size={16} 
-      />}
+      icon={<ArrowDownUp size={16} />}
+      onValueChange={(value) =>
+        handleSelectFilterChange("order_by_direction", value, navigate)
+      }
     />
   );
 }
