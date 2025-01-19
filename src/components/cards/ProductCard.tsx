@@ -39,7 +39,7 @@ export default function ProductCard(product: ProductCardProps) {
 
   return (
     <ProductDetailsDrawer product={product} discount={discount}>
-      <Card className="hover:bg-accent/70 cursor-pointer border transition-colors">
+      <Card className="hover:bg-accent/70 cursor-pointer border transition-colors flex flex-col">
         <CardHeader className="relative p-0">
           <Image
             src={image ?? "/status/emptyImage.png"}
@@ -50,7 +50,7 @@ export default function ProductCard(product: ProductCardProps) {
             )}
           />
         </CardHeader>
-        <CardContent className="flex flex-col gap-2 pb-2 pt-4">
+        <CardContent className="flex flex-col gap-2 pb-2 pt-4 h-full">
           <div className="-mt-2 flex items-center justify-between ">
             {discount > 0 && (
               <Badge
@@ -71,7 +71,7 @@ export default function ProductCard(product: ProductCardProps) {
           </div>
           <Typography variant="h4">{product_name}</Typography>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-auto">
             <div className="flex flex-col justify-between">
               <Typography
                 variant="muted"
