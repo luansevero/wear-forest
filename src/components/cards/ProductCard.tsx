@@ -18,14 +18,14 @@ import ProductDetailsDrawer from "../drawers/ProductDetailsDrawer";
 
 type ProductCardProps = Product;
 
-export default function ProductCard(product : ProductCardProps) {
+export default function ProductCard(product: ProductCardProps) {
   const {
     product_name,
     retail_price,
     discounted_price,
     product_rating,
-    images
-  } = product
+    images,
+  } = product;
 
   const discount = useMemo(
     () => calculateDiscount(retail_price, discounted_price),
@@ -35,25 +35,32 @@ export default function ProductCard(product : ProductCardProps) {
   const price = "$" + String(retail_price.toFixed(2));
   const actualPrice = "$" + String(discounted_price.toFixed(2));
 
-  const image = images?.[0]
+  const image = images?.[0];
 
   return (
     <ProductDetailsDrawer product={product} discount={discount}>
-      <Card className="border hover:bg-accent/70 cursor-pointer transition-colors">
+      <Card className="hover:bg-accent/70 cursor-pointer border transition-colors">
         <CardHeader className="relative p-0">
           <Image
-            src={
-              image ?? "/status/emptyImage.png"
-            }
+            src={image ?? "/status/emptyImage.png"}
             alt={"product_main_image"}
-            wrapperClassName={cn("aspect-[4/3] rounded-t-xl", !image && "bg-white")}
+            wrapperClassName={cn(
+              "aspect-[4/3] rounded-t-xl",
+              !image && "bg-white",
+            )}
           />
         </CardHeader>
         <CardContent className="flex flex-col gap-2 pb-2 pt-4">
           <div className="-mt-2 flex items-center justify-between ">
-            <Badge shape={"pill"} className="w-fit px-2" variant={"secondary"}>
-              Up to {discount}% off
-            </Badge>
+            {discount > 0 && (
+              <Badge
+                shape={"pill"}
+                className="w-fit px-2"
+                variant={"secondary"}
+              >
+                Up to {discount}% off
+              </Badge>
+            )}
 
             <CommentRatings
               variant="yellow"

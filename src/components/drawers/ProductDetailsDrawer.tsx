@@ -31,11 +31,11 @@ export default function ProductDetailsDrawer({
   product,
   discount,
 }: Props) {
-  const { cart= {} } = useCartStore()
+  const { cart = {} } = useCartStore();
   const price = "$" + String(product.retail_price.toFixed(2));
   const actualPrice = "$" + String(product.discounted_price.toFixed(2));
 
-  const productAtCart = cart?.[product.pid]
+  const productAtCart = cart?.[product.pid];
 
   return (
     <Drawer>
@@ -74,13 +74,15 @@ export default function ProductDetailsDrawer({
             </div>
             <div className="flex w-full flex-wrap items-center justify-end gap-1">
               <AddToWhishlistButton className="h-6 w-6 px-0" />
-              <Badge
-                shape={"pill"}
-                className="w-fit px-2"
-                variant={"secondary"}
-              >
-                Up to {discount}% off
-              </Badge>
+              {discount > 0 && (
+                <Badge
+                  shape={"pill"}
+                  className="w-fit px-2"
+                  variant={"secondary"}
+                >
+                  Up to {discount}% off
+                </Badge>
+              )}
               <CommentRatings
                 variant="yellow"
                 rating={product.product_rating}
@@ -91,8 +93,8 @@ export default function ProductDetailsDrawer({
           </div>
           <DrawerFooter className="sticky bottom-0 border-t">
             {productAtCart && (
-              <div className="flex items-center gap-2 text-muted-foreground justify-end">
-                <ShoppingCart className="size-3"/>
+              <div className="text-muted-foreground flex items-center justify-end gap-2">
+                <ShoppingCart className="size-3" />
                 <Typography variant="muted">
                   On cart: {productAtCart.amount}
                 </Typography>
