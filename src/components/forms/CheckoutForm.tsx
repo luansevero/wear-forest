@@ -32,10 +32,9 @@ export default function CheckoutForm() {
 
       const postPayload: PostCheckoutPayload = {
         Cart: checkoutCart,
-        EmailContact: "",
       };
 
-      mutateAsync(postPayload)
+      mutateAsync(postPayload);
     },
   });
 

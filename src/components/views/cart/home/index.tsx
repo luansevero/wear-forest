@@ -17,7 +17,7 @@ export default function CartHomePage() {
       {!haveProductsOnCart && <EmptyCart />}
 
       {haveProductsOnCart && (
-        <Section className={cn("sm:col-span-2")}>
+        <Section className={cn("lg:col-span-2")}>
           <List
             data={cartArray}
             children={(product) => <OrderProductsCard {...product} />}

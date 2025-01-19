@@ -7,7 +7,7 @@ export const Route = createLazyFileRoute('/cart/_layout/')({
 
 function RouteComponent() {
   return (
-    <main className="mx-auto grid max-w-7xl sm:grid-cols-3">
+    <main className="mx-auto grid max-w-7xl lg:grid-cols-3">
       <CartHomePage />
     </main>
   )
