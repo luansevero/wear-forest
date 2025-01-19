@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const productsFiltersSchema = z.object({
   page: z.optional(z.number()),
-  order_by: z.optional(z.union([
+  by: z.optional(z.union([
     z.literal("brand"),
     z.literal("discounted_price"),
     z.literal("overall_rating"),
@@ -11,11 +11,12 @@ export const productsFiltersSchema = z.object({
     z.literal("product_rating"),
     z.literal("retail_price"),
   ])),
-  order_by_direction: z.optional(z.union([
+  direction: z.optional(z.union([
     z.literal("asc"),
     z.literal("desc")
   ])),
-  query: z.optional(z.string())
+  query: z.optional(z.string()),
+  pagination: z.optional(z.number())
 });
 
 export const Route = createFileRoute("/_store/")({

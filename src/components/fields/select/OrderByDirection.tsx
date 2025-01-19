@@ -10,7 +10,7 @@ export default function OrderByDirectionSelect() {
   const value = useSearch({
     from: "/_store/",
     select(state) {
-      return state?.order_by_direction ?? "none";
+      return state?.direction ?? "none";
     },
   });
 

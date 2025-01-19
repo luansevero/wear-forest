@@ -25,7 +25,7 @@ export default function EmptyProductsSection() {
       </Typography>
       <div className="pt-6">
         {Object.values(filters)?.length > 0 && (
-          <Button asChild>
+          <Button asChild variant={"outline"}>
             <Link to="/" search={undefined}>
               <FilterX />
               Remove filters
