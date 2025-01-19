@@ -11,7 +11,7 @@ async function postCheckout(payload: PostCheckoutPayload): Promise<CheckoutOutpu
   const url = checkoutRouter.base
   return api.post(url, {
     ...payload,
-    EmailContact: import.meta.env.EMAIL_CONTACT
+    EmailContact: import.meta.env.VITE_EMAIL_CONTACT
   }).then(response => response.data)
 }
 
