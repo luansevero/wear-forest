@@ -1,9 +1,6 @@
 import { GetPayload } from "@/types/http";
 import { Product } from "@/types/product";
-import { ZodSchemaFor } from "@/types/shared";
 import { useForm } from "@tanstack/react-form";
-import { useSearch } from "@tanstack/react-router";
-import { z } from "zod";
 import SelectField from "../fields/select";
 import orderDirection from "@/constants/order_by/direction";
 import { SelectItem } from "@/@core/components/ui/Select";

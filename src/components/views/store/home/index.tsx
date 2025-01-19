@@ -6,10 +6,12 @@ import Grid from "@/@core/components/ui/Grid";
 import Section from "@/@core/components/ui/Section";
 import { useScroll } from "framer-motion";
 import React, { useState, useEffect } from "react";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import useGetProductsQueryOptions from "@/hooks/useService/products/useGetProducts";
 import EmptyProductsSection from "../EmptyProductsSection";
 // import { useSearch } from "@tanstack/react-router";
+
+// TODO => Add filters
 
 export default function StoreHomePage() {
   const { scrollYProgress } = useScroll();
