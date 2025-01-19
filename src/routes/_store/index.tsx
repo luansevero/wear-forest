@@ -20,4 +20,7 @@ export const productsFiltersSchema = z.object({
 
 export const Route = createFileRoute("/_store/")({
   validateSearch: productsFiltersSchema,
+  loader: () => {
+
+  },
 });

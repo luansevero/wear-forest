@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { CartItem } from "@/types/checkout";
+import { CartItem, CheckoutOutput } from "@/types/checkout";
 import { persist } from "zustand/middleware";
 import { Product } from "@/types/product";
 
@@ -10,8 +10,10 @@ export type StoreCartItem = CartItem &
 
 export type CartStore = {
   cart?: Record<string, StoreCartItem>;
+  lastOrderNumber?: string;
+  setOrderNumber: (order_number: CheckoutOutput["order_number"]) => void;
   reduceAmountOfProduct: (pid: CartItem["pid"]) => void;
-  increaseAmountOfProduct: (pid: CartItem["pid"]) => void
+  increaseAmountOfProduct: (pid: CartItem["pid"]) => void;
   addToCart: (product: StoreCartItem) => void;
   removeFromCart: (pid: CartItem["pid"]) => void;
   clearCart: () => void;
@@ -58,20 +60,20 @@ export const useCartStore = create(
         }
       },
       increaseAmountOfProduct(pid) {
-        const {cart} = get()
-        const existingProduct = cart?.[pid]
+        const { cart } = get();
+        const existingProduct = cart?.[pid];
 
-        if(!existingProduct) return;
+        if (!existingProduct) return;
 
         set({
           cart: {
             ...cart,
             [pid]: {
               ...existingProduct,
-              amount: existingProduct.amount + 1
-            }
-          }
-        })
+              amount: existingProduct.amount + 1,
+            },
+          },
+        });
       },
       removeFromCart(pid) {
         const { cart } = get();
@@ -81,7 +83,10 @@ export const useCartStore = create(
         }
       },
       clearCart() {
-        set({ cart: undefined });
+        set({ cart: undefined, lastOrderNumber: undefined });
+      },
+      setOrderNumber(order_number) {
+        set({ lastOrderNumber: order_number });
       },
     }),
     {

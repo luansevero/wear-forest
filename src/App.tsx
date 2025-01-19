@@ -25,6 +25,7 @@ const router = createRouter({
   routeTree,
   context: {
     queryClient,
+
   },
   defaultPreloadStaleTime: 0,
 });

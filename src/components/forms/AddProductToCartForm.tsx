@@ -10,6 +10,7 @@ import { StoreCartItem, useCartStore } from "@/stores/cartStore";
 import { useCallback } from "react";
 import { toast } from "sonner";
 import { DialogClose } from "@radix-ui/react-dialog";
+import toastSupport from "@/utils/toast";
 
 type Props = Omit<StoreCartItem, "amount">;
 type FormPayload = StoreCartItem;
@@ -51,7 +52,7 @@ export default function AddProductToCartForm({
 
         form.reset();
       } catch {
-        // Adicionar tratamento de falha ( um toast diferente )
+        toastSupport()
       }
     },
   });

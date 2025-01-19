@@ -8,9 +8,6 @@ import {
 import Summary from "../_common/Summary";
 import { useCartStore } from "@/stores/cartStore";
 import { useCallback } from "react";
-import { Button } from "@/@core/components/ui/Button";
-import { Link } from "@tanstack/react-router";
-import Typography from "@/@core/components/ui/Typography";
 import CheckoutForm from "../forms/CheckoutForm";
 
 const SHIP_PRICE = 25;

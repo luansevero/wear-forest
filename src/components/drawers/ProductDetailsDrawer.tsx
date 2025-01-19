@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { ShoppingCart } from "lucide-react";
 import {

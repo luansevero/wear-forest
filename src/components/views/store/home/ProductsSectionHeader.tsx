@@ -11,13 +11,13 @@ export default function ProductsSectionHeader() {
 
   useEffect(() => {
     return scrollYProgress.onChange((progress) => {
-      setIsScrolled(progress > 1);
+      setIsScrolled(progress > 0);
     });
   }, [scrollYProgress]);
 
   return (
     <Section
-      className={`sticky top-8 z-20 mt-0 backdrop-blur-lg justify-between py-4 md:top-[69px] md:flex-row w-full ${isScrolled ? "border-b shadow-md" : ""}`}
+      className={`sticky top-8 z-20 mt-0 bg-background justify-between py-4 md:top-[69px] md:flex-row w-full ${isScrolled ? "border-b shadow-md" : ""}`}
     >
       <div className=" mx-auto max-w-7xl w-full flex flex-col md:flex-row justify-between gap-2 px-4 z-30">
         <Typography variant="h4">Products</Typography>
