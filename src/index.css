@@ -63,6 +63,15 @@
   * {
     @apply border-border;
   }
+
+  html, body, #root {
+    @apply min-h-svh w-full h-full
+  }
+
+  #root {
+    @apply flex flex-col
+  }
+
   body {
     @apply bg-background text-foreground;
   }

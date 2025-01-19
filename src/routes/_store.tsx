@@ -10,7 +10,7 @@ function RouteComponent() {
   return (
     <React.Fragment>
       <StoreHeaderNav />
-      <div className="relative mx-auto max-w-7xl">
+      <div className="relative mx-auto max-w-7xl flex-1 w-full flex flex-col">
         <Outlet />
       </div>
     </React.Fragment>
