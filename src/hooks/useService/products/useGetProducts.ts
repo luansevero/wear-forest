@@ -35,6 +35,7 @@ export default function useGetProductsQueryOptions<
       params?.order_by,
       params?.order_by_direction,
       params?.take,
+      params?.query
     ],
     queryFn: () => getProducts(params),
     enabled: isEnabled,
