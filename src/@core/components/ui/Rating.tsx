@@ -13,7 +13,7 @@ const ratingVariants = {
   },
   yellow: {
     star: "text-yellow-500",
-    emptyStar: "text-yellow-200",
+    emptyStar: "text-yellow-500",
   },
   orange: {
     star: "text-orange-500",
@@ -124,7 +124,7 @@ export const CommentRatings = ({
             "data-star-index": i + fullStars + 1,
           }),
         )}
-        <span className="text-muted-foreground text-xs font-semibold ps-1">
+        <span className="text-foreground text-xs font-semibold ps-1">
          {`${currentRating}`}
         </span>
       </div>
